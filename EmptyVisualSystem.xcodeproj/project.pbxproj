@@ -56,7 +56,7 @@
 		3D5B93FB1753048300F558AC /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B93E91753048300F558AC /* ofxTween.cpp */; };
 		3D5B941D1753048A00F558AC /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B94191753048A00F558AC /* ofxTextInputField.cpp */; };
 		3D5B943B1753049600F558AC /* ofxMSATimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B94361753049600F558AC /* ofxMSATimer.cpp */; };
-		3DA460BC179EC5C2002EC0AC /* emptyVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DA460BA179EC5C2002EC0AC /* emptyVisualSystem.cpp */; };
+		3DA460BC179EC5C2002EC0AC /* CloudsVisualSystemEmpty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DA460BA179EC5C2002EC0AC /* CloudsVisualSystemEmpty.cpp */; };
 		3DA460C7179ED608002EC0AC /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DA460C0179ED608002EC0AC /* CloudsRGBDCombinedRenderer.cpp */; };
 		3DA460C8179ED608002EC0AC /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DA460C2179ED608002EC0AC /* CloudsVisualSystem.cpp */; };
 		3DEFE117176E7D8000139095 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFE110176E7D8000139095 /* tinyxml.cpp */; };
@@ -254,8 +254,8 @@
 		3D5B94371753049600F558AC /* ofxMSATimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMSATimer.h; sourceTree = "<group>"; };
 		3D5B9440175304B800F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3D5B9442175304B800F558AC /* ofRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofRange.h; sourceTree = "<group>"; };
-		3DA460BA179EC5C2002EC0AC /* emptyVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = emptyVisualSystem.cpp; sourceTree = "<group>"; };
-		3DA460BB179EC5C2002EC0AC /* emptyVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emptyVisualSystem.h; sourceTree = "<group>"; };
+		3DA460BA179EC5C2002EC0AC /* CloudsVisualSystemEmpty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemEmpty.cpp; sourceTree = "<group>"; };
+		3DA460BB179EC5C2002EC0AC /* CloudsVisualSystemEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemEmpty.h; sourceTree = "<group>"; };
 		3DA460C0179ED608002EC0AC /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
 		3DA460C1179ED608002EC0AC /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
 		3DA460C2179ED608002EC0AC /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
@@ -380,7 +380,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* EmptyVisualSystem.temp_caseinsensitive_renameDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmptyVisualSystem.temp_caseinsensitive_renameDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* EmptyVisualSystemDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmptyVisualSystemDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -788,8 +788,8 @@
 		3DA45C5F179DB6C3002EC0AC /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				3DA460BB179EC5C2002EC0AC /* emptyVisualSystem.h */,
-				3DA460BA179EC5C2002EC0AC /* emptyVisualSystem.cpp */,
+				3DA460BB179EC5C2002EC0AC /* CloudsVisualSystemEmpty.h */,
+				3DA460BA179EC5C2002EC0AC /* CloudsVisualSystemEmpty.cpp */,
 			);
 			path = vs_src;
 			sourceTree = SOURCE_ROOT;
@@ -1038,7 +1038,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* EmptyVisualSystem.temp_caseinsensitive_renameDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* EmptyVisualSystemDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1064,9 +1064,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* EmptyVisualSystem.temp_caseinsensitive_rename */ = {
+		E4B69B5A0A3A1756003C02F2 /* EmptyVisualSystem */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "EmptyVisualSystem.temp_caseinsensitive_rename" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "EmptyVisualSystem" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -1078,9 +1078,9 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = EmptyVisualSystem.temp_caseinsensitive_rename;
+			name = EmptyVisualSystem;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* EmptyVisualSystem.temp_caseinsensitive_renameDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* EmptyVisualSystemDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1109,7 +1109,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* EmptyVisualSystem.temp_caseinsensitive_rename */,
+				E4B69B5A0A3A1756003C02F2 /* EmptyVisualSystem */,
 			);
 		};
 /* End PBXProject section */
@@ -1216,7 +1216,7 @@
 				3DEFE118176E7D8000139095 /* tinyxmlerror.cpp in Sources */,
 				3DEFE119176E7D8000139095 /* tinyxmlparser.cpp in Sources */,
 				3DEFE11A176E7D8000139095 /* ofxXmlSettings.cpp in Sources */,
-				3DA460BC179EC5C2002EC0AC /* emptyVisualSystem.cpp in Sources */,
+				3DA460BC179EC5C2002EC0AC /* CloudsVisualSystemEmpty.cpp in Sources */,
 				3DA460C7179ED608002EC0AC /* CloudsRGBDCombinedRenderer.cpp in Sources */,
 				3DA460C8179ED608002EC0AC /* CloudsVisualSystem.cpp in Sources */,
 			);
@@ -1397,7 +1397,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = EmptyVisualSystem.temp_caseinsensitive_renameDebug;
+				PRODUCT_NAME = EmptyVisualSystemDebug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1498,7 +1498,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../CLOUDS/CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = EmptyVisualSystem.temp_caseinsensitive_rename;
+				PRODUCT_NAME = EmptyVisualSystem;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1515,7 +1515,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "EmptyVisualSystem.temp_caseinsensitive_rename" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "EmptyVisualSystem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,
