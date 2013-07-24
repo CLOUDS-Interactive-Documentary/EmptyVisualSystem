@@ -1,58 +1,46 @@
 # Empty Visual System 
 
-Welcome to CLOUDS Visual System!
-We call VisualSystems to modular visual sketches that reinforce and illustrate abstract concepts present on CLOUDS Documentary.
+Welcome to the CLOUDS Interactive Documentary CodeStorm! We'll be creating Visual Systems, modular visual sketches  used that are used along with the pointcloud interviews to illustrate the concepts presented in the film.
 
-In order to make the process of making a VisualSystem efficient and easy. We have put together [Reza Ali](http://www.syedrezaali.com) DJ environment call *Rezonator*. This will lets sketch powerful sketches providing the exquisite `ofxUI` to customize every single detail of it. This variables will be able to be save as **Presets**. At the end this Presets are going to be curated inside the documentary.
-
-Together with [James George](http://jamesgeorge.org/)'s `ofxTimeLine` this environment provides the ability to animate those changes over time.
-
+In order to make the process of making a VisualSystem efficient and easy we have put together a wrapper that is a lot like a testApp.cpp but with ofxTimeline and ofxUI built in for variable and animation controls. At the end this Presets are going to be curated inside the documentary.
 
 ## Create your own visual system
 
-### Fast Way:
+Download a fresh openFrameworks 0.7.4 http://www.openframeworks.cc/download/
+	
+	#clone the empty template
+	cd of_v0.7.4_osx_release/apps/myApps
+	git clone https://github.com/CLOUDS-Interactive-Documentary/EmptyVisualSystem
+	cd EmptyVisualSystem
+	
+	#get the shared code library for Clouds
+	git submodule init
+	git submodule update
+	
+	#clone all the addons
+	chmod 733 cloneaddons.sh
+	./cloneaddons.sh
 	
 	
-	Download openFrameworks 0.7.4 http://www.openframeworks.cc/download/
+Next you need to rename the project to the name of your sketch,
 	
-	Download http://cloudsdocumentary.com/codestorm/VisualSystemTemplate.zip
-	
-	unzip VisualSystemTemplate.zip into apps/myApps
-	
-	rename project files
-	
-	
-### Github Way: 
-
-	cd openFrameworks
-	cd apps/myApps
-	git clone https://github.com/CLOUDS-Interactive-Documentary/emptyVisualSystem
-
-	2) run git submodule init
-	
-	Once the repo is cloned you need to pull the VisualSystemsLibrary submodule. This contain the source of Reza's Rezonator mixed with James's ofxTimeLine. Together this provide the abstract
-	class you will extend in order to make your own VisualSystem.
-
-		cd emptyVisualSystem	
-		git pull && git submodule init && git submodule update && git submodule status
-
-	3) create a new repo on CLOUDS-Interactive-Documentary, for example 'Ocean' and at git@github.com:CLOUDS-Interactive-Documentary/Ocean
-
-	4) make a copy of emptyVisualSystem folder in myApps/ and rename it to Ocean
-
-	5) in the terminal, cd into Ocean/ and do the following 3 commands
-
+	* Rename the project file from EmptyVisualSystem to something else
+	* In EmptyVisualSystem.h string getSystemName() return the name of your new class
+	* Change CloudsVisualSystem class name to another class name
+	* Ask us to create a new repo on CLOUDS-Interactive-Documentary, for example 'MyVisualSystem' 
+	* It's URL would be git@github.com:CLOUDS-Interactive-Documentary/MyVisualSystem
+	* make a copy of emptyVisualSystem folder in myApps/ and rename it to MyVisualSystem
+	* in the terminal, cd into Ocean/ and do the following 3 commands
 		git remote rm origin
-		git remote add origin git@github.com:CLOUDS-Interactive-Documentary/<YourRepoName>.git 
+		git remote add origin git@github.com:CLOUDS-Interactive-Documentary/MyVisualSystem.git 
 		git push -u origin master
 
-	This will redirect the empty repo to your new repo
+	* This will redirect from the empty repo to your new repo
 
-	6) rename the project files and files and you are good to go
 
-### Modify ofMaterial
+### Modify ofMaterial & ofLight
 
-The resonator let you adjust the camera, lights and other important rendering sets like the material. In order to be able to change the material properties from the GUI we need to modify `openframeworks/libs/openFrameworks/gl/ofMaterial.h` by forcing this functions to pass their values by reference:
+The resonator lets you adjust the camera, lights and other important rendering sets like the material. In order to be able to change the material properties from the GUI we need to modify `openframeworks/libs/openFrameworks/gl/ofMaterial.h` by forcing this functions to pass their values by reference:
 
 	ofFloatColor &getDiffuseColor();
 	ofFloatColor &getAmbientColor();
@@ -82,13 +70,9 @@ Do the same on the `ofMaterial.cpp`:
 		return emissive;
 	}
 	
-### Install Addons
+### Included Addons
 
-This environment use some addons from the community. Go to addons...
-
-	cd ../../../addons/
-	
-…  and start adding:
+CLOUDS uses many addons from the community 
 
 * [ofxRange](https://github.com/Flightphase/ofxRange) by James George
 
