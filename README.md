@@ -30,7 +30,7 @@ Next you need to rename the project to the name of your sketch,
 * In EmptyVisualSystem.h modify the system name to match your sketch
 		
 		string getSystemName(){
-			return "MySystem"
+			return "MyVisualSystem"
 		}
 
 * Change CloudsVisualSystem class name to another class name using find-replace
@@ -42,8 +42,6 @@ Next you need to rename the project to the name of your sketch,
 		$ git remote rm origin
 		$ git remote add origin git@github.com:CLOUDS-Interactive-Documentary/MyVisualSystem.git 
 		$ git push -u origin master
-
-
 
 ### Modify ofMaterial & ofLight
 
