@@ -83,13 +83,13 @@ CLOUDS uses many addons from the community
 
 * [ofxMSATimer](https://github.com/obviousjim/ofxMSATimer) by Memo Atken, James George, Philip Whitfield, Juan Pablo Manson
 		
-* [ofxTween](https://github.com/Flightphase/ofxTween) by James George
+* [ofxTween](https://github.com/Flightphase/ofxTween) by Arturo Castro, James George
 
 * [ofxTextInputField](https://github.com/Flightphase/ofxTextInputField) by James George & Elliot Woods
 		
 * [ofxTimecode](https://github.com/YCAMInterlab/ofxTimecode) by James George
 		
-* [ofxTimeline](https://github.com/YCAMInterlab/ofxTimeline) by James George
+* [ofxTimeline](https://github.com/YCAMInterlab/ofxTimeline) by James George, supported by YCAMInterlab
 	
 * [ofxCameraSaveLoad](https://github.com/roymacdonald/ofxCameraSaveLoad) by Roy MacDonald
 		
