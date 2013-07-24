@@ -47,34 +47,60 @@ Next you need to rename the project to the name of your sketch,
 
 To Run you'll need to modify two things in the oF Core
 
-	ofFloatColor &getDiffuseColor();
-	ofFloatColor &getAmbientColor();
-	ofFloatColor &getSpecularColor();
-	ofFloatColor &getEmissiveColor();
-	float &getShininess(); 
-	
-Do the same on the `ofMaterial.cpp`:
+In libs/openFrameworks/gl/ofLight.h add reference declaration and remove const
 
-	float& ofMaterial::getShininess(){
-		return shininess;
-	}
+		ofFloatColor& getAmbientColor();
+		ofFloatColor& getDiffuseColor();
+		ofFloatColor& getSpecularColor();
 
-	ofFloatColor& ofMaterial::getDiffuseColor() {
-		return diffuse;
-	}
+In libs/openFrameworks/gl/ofLight.cpp as well
 
-	ofFloatColor& ofMaterial::getAmbientColor() {
-		return ambient;
-	}
+		//----------------------------------------
+		ofFloatColor& ofLight::getAmbientColor() {
+			return ambientColor;
+		}
+		
+		//----------------------------------------
+		ofFloatColor& ofLight::getDiffuseColor() {
+			return diffuseColor;
+		}
+		
+		//----------------------------------------
+		ofFloatColor& ofLight::getSpecularColor() {
+			return specularColor;
+		}
+		
+In libs/openFrameworks/gl/ofMaterial.h add references to the material colors
 
-	ofFloatColor& ofMaterial::getSpecularColor() {
-		return specular;
-	}
+		ofFloatColor& getDiffuseColor();
+		ofFloatColor& getAmbientColor();
+		ofFloatColor& getSpecularColor();
+		ofFloatColor& getEmissiveColor();
+		float& getShininess();
 
-	ofFloatColor& ofMaterial::getEmissiveColor() {
-		return emissive;
-	}
-	
+Match the changes in libs/openFrameworks/gl/ofMaterial.cpp 
+
+		float& ofMaterial::getShininess(){
+			return shininess;
+		}
+		
+		ofFloatColor& ofMaterial::getDiffuseColor() {
+			return diffuse;
+		}
+		
+		ofFloatColor ofMaterial::getAmbientColor() {
+			return ambient;
+		}
+		
+		ofFloatColor ofMaterial::getSpecularColor() {
+			return specular;
+		}
+		
+		ofFloatColor ofMaterial::getEmissiveColor() {
+			return emissive;
+		}
+
+
 ### Included Addons
 
 CLOUDS uses many addons from the community 
@@ -122,15 +148,4 @@ Some useful hotkeys for the interface
 * SPACE : Toggly play on the timeline
 * SHIFT+T : Set a camera point on the camera track
 * SHIFT+L : Toggle following your camera track
-
-
-
-
-
- 
-
-
-
-
-
 
