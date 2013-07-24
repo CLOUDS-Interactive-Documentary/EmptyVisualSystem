@@ -12,10 +12,10 @@ Download a fresh openFrameworks 0.7.4 http://www.openframeworks.cc/download/ unz
 
 		$ cd of_v0.7.4_osx_release/apps/myApps
 		$ git clone https://github.com/CLOUDS-Interactive-Documentary/EmptyVisualSystem
-		$ cd EmptyVisualSystem/
 	
 * get the shared code library for Clouds
-
+* 
+		$ cd EmptyVisualSystem/
 		$ git submodule init
 		$ git submodule update
 		
