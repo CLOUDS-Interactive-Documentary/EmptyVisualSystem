@@ -34,7 +34,7 @@ Next you need to rename the project to the name of your sketch,
 		}
 
 * Change CloudsVisualSystem class name to another class name using find-replace
-* Ask us to create a new repo on CLOUDS-Interactive-Documentary, for example 'MyVisualSystem' 
+* Ask us to create a new repo on CLOUDS-Interactive-Documentary that matches your sketch name 'MyVisualSystem' 
 * It's URL would be git@github.com:CLOUDS-Interactive-Documentary/MyVisualSystem
 * make a copy of emptyVisualSystem folder in myApps/ and rename it to MyVisualSystem
 * in the terminal, cd into Ocean/ and and redirect from the empty repo to your new repo
@@ -81,40 +81,21 @@ CLOUDS uses many addons from the community
 
 * [ofxRange](https://github.com/Flightphase/ofxRange) by James George
 
-		git clone git@github.com:Flightphase/ofxRange.git
-
 * [ofxMSATimer](https://github.com/obviousjim/ofxMSATimer) by Memo Atken, James George, Philip Whitfield, Juan Pablo Manson
-
-		git clone git@github.com:obviousjim/ofxMSATimer.git
 		
 * [ofxTween](https://github.com/Flightphase/ofxTween) by James George
 
-		git clone git@github.com:Flightphase/ofxTween.git
-		
 * [ofxTextInputField](https://github.com/Flightphase/ofxTextInputField) by James George & Elliot Woods
-
-		git clone git@github.com:Flightphase/ofxTextInputField.git
 		
 * [ofxTimecode](https://github.com/YCAMInterlab/ofxTimecode) by James George
-
-		git clone git@github.com:YCAMInterlab/ofxTimecode.git
 		
 * [ofxTimeline](https://github.com/YCAMInterlab/ofxTimeline) by James George
-
-		git clone git@github.com:YCAMInterlab/ofxTimeline.git
-		git checkout develop
-		
+	
 * [ofxCameraSaveLoad](https://github.com/roymacdonald/ofxCameraSaveLoad) by Roy MacDonald
-
-		git clone git@github.com:roymacdonald/ofxCameraSaveLoad.git
 		
 * [ofxGenerative](https://github.com/rezaali/ofxGenerative) by Reza Ali
-
-		git clone git@github.com:rezaali/ofxGenerative.git
 		
 * [ofxUI](https://github.com/rezaali/ofxUI) by Reza Ali
-
-		git clone git@github.com:rezaali/ofxUI.git
 
 ### Loading data
 
