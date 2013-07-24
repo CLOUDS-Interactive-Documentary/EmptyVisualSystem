@@ -27,8 +27,13 @@ Download a fresh openFrameworks 0.7.4 http://www.openframeworks.cc/download/ unz
 Next you need to rename the project to the name of your sketch,
 	
 * Rename the project file from EmptyVisualSystem to something else
-* In EmptyVisualSystem.h string getSystemName() return the name of your new class
-* Change CloudsVisualSystem class name to another class name
+* In EmptyVisualSystem.h modify the system name to match your sketch
+		
+		string getSystemName(){
+			return "MySystem"
+		}
+
+* Change CloudsVisualSystem class name to another class name using find-replace
 * Ask us to create a new repo on CLOUDS-Interactive-Documentary, for example 'MyVisualSystem' 
 * It's URL would be git@github.com:CLOUDS-Interactive-Documentary/MyVisualSystem
 * make a copy of emptyVisualSystem folder in myApps/ and rename it to MyVisualSystem
@@ -88,7 +93,7 @@ CLOUDS uses many addons from the community
 
 		git clone git@github.com:Flightphase/ofxTween.git
 		
-* [ofxTextInputField](https://github.com/Flightphase/ofxTextInputField) by James George, Elliot Woods, Kimchi and Chips.
+* [ofxTextInputField](https://github.com/Flightphase/ofxTextInputField) by James George & Elliot Woods
 
 		git clone git@github.com:Flightphase/ofxTextInputField.git
 		
@@ -112,15 +117,22 @@ CLOUDS uses many addons from the community
 * [ofxUI](https://github.com/rezaali/ofxUI) by Reza Ali
 
 		git clone git@github.com:rezaali/ofxUI.git
-		
 
 ### Loading data
 
-Anywhere you want to access things in your bin/data folder you'll need to do so by first calling getVisualSystemDataPath() + "path/to/my/stuff". This will ensure that your data access works when running the module inside of CLOUDS
+Anywhere you want to access things in your bin/data folder you'll need to do so by first calling getVisualSystemDataPath() + "path/to/my/stuff". This will ensure that your data access works when running the module inside of Clouds.
 
- 
+### Saving Presets
+
+Clouds VisualSystems are driven by presets. To create a preset, configure the variables and timing just how you like and then click Save on the main GUI. Enter a name on the pop window and confirm. This will save all your settings into bin/data/Presets/
+
+The Presets GUI now has a button with the name you just entered, and you can click to bring those settings back. Feel free to change anythign after you've created a preset, since you'll always be modifying the Working/ preset.
+
+Make sure to check your presets into GitHub so we can use them in Clouds
+
 ### Hot-Keys 
 
+Some useful hotkeys for the interface
 * F : Toogle Fullscreen
 * H : Hide/Show GUI
 * E : Arrange GUI in Cascade  
@@ -128,10 +140,12 @@ Anywhere you want to access things in your bin/data folder you'll need to do so 
 * T : Minimize GUI
 * Y : Arrange GUI in circle
 * ` : Take a snapshoot
+* SPACE : Toggly play on the timeline
+* SHIFT+T : Set a camera point on the camera track
+* SHIFT+L : Toggle following your camera track
 
-### How to Animate?
 
-### How to Save/Delete a Preset?
+
 
 
  
