@@ -107,7 +107,7 @@ Clouds VisualSystems are driven by presets. To create a preset, configure the va
 
 The Presets GUI now has a button with the name you just entered, and you can click to bring those settings back. Feel free to change anythign after you've created a preset, since you'll always be modifying the Working/ preset.
 
-Make sure to check your presets into GitHub so we can use them in Clouds
+Make sure to check your presets so everyone can check it out!
 
 ### Hot-Keys 
 
