@@ -6,41 +6,43 @@ In order to make the process of making a VisualSystem efficient and easy we have
 
 ## Create your own visual system
 
-Download a fresh openFrameworks 0.7.4 http://www.openframeworks.cc/download/
+Download a fresh openFrameworks 0.7.4 http://www.openframeworks.cc/download/ unzip it and do the following commands in the terminal
 	
-	#clone the empty template
-	cd of_v0.7.4_osx_release/apps/myApps
-	git clone https://github.com/CLOUDS-Interactive-Documentary/EmptyVisualSystem
-	cd EmptyVisualSystem
+* clone the empty template
+
+		$ cd of_v0.7.4_osx_release/apps/myApps
+		$ git clone https://github.com/CLOUDS-Interactive-Documentary/EmptyVisualSystem
+		$ cd EmptyVisualSystem/
 	
-	#get the shared code library for Clouds
-	git submodule init
-	git submodule update
-	
-	#clone all the addons
-	chmod 733 cloneaddons.sh
-	./cloneaddons.sh
-	
-	
+* get the shared code library for Clouds
+
+		$ git submodule init
+		$ git submodule update
+		
+* clone all the addons
+
+		$ chmod 733 cloneaddons.sh
+		$ ./cloneaddons.sh
+		
 Next you need to rename the project to the name of your sketch,
 	
-	* Rename the project file from EmptyVisualSystem to something else
-	* In EmptyVisualSystem.h string getSystemName() return the name of your new class
-	* Change CloudsVisualSystem class name to another class name
-	* Ask us to create a new repo on CLOUDS-Interactive-Documentary, for example 'MyVisualSystem' 
-	* It's URL would be git@github.com:CLOUDS-Interactive-Documentary/MyVisualSystem
-	* make a copy of emptyVisualSystem folder in myApps/ and rename it to MyVisualSystem
-	* in the terminal, cd into Ocean/ and do the following 3 commands
-		git remote rm origin
-		git remote add origin git@github.com:CLOUDS-Interactive-Documentary/MyVisualSystem.git 
-		git push -u origin master
+* Rename the project file from EmptyVisualSystem to something else
+* In EmptyVisualSystem.h string getSystemName() return the name of your new class
+* Change CloudsVisualSystem class name to another class name
+* Ask us to create a new repo on CLOUDS-Interactive-Documentary, for example 'MyVisualSystem' 
+* It's URL would be git@github.com:CLOUDS-Interactive-Documentary/MyVisualSystem
+* make a copy of emptyVisualSystem folder in myApps/ and rename it to MyVisualSystem
+* in the terminal, cd into Ocean/ and and redirect from the empty repo to your new repo
 
-	* This will redirect from the empty repo to your new repo
+		$ git remote rm origin
+		$ git remote add origin git@github.com:CLOUDS-Interactive-Documentary/MyVisualSystem.git 
+		$ git push -u origin master
+
 
 
 ### Modify ofMaterial & ofLight
 
-The resonator lets you adjust the camera, lights and other important rendering sets like the material. In order to be able to change the material properties from the GUI we need to modify `openframeworks/libs/openFrameworks/gl/ofMaterial.h` by forcing this functions to pass their values by reference:
+To Run you'll need to modify two things in the oF Core
 
 	ofFloatColor &getDiffuseColor();
 	ofFloatColor &getAmbientColor();
@@ -111,26 +113,11 @@ CLOUDS uses many addons from the community
 
 		git clone git@github.com:rezaali/ofxUI.git
 		
-## Making your own VisualSystem
 
-Once you follow the installation process you can compile and see the emptyVisualSystem working. To make your own VisualSystem you need to duplicate the emptyVisualSystem folder. And then rename the `emptyVisualSystem.h` and `emptyVisualSystem.cpp`
+### Loading data
 
-This will require some extra renaming on the `testApp.h` source as well. 
+Anywhere you want to access things in your bin/data folder you'll need to do so by first calling getVisualSystemDataPath() + "path/to/my/stuff". This will ensure that your data access works when running the module inside of CLOUDS
 
-### Your Code 
-
-As you can see there is `vs_src` folder. That's were your extended class of `CloudsVisualSystem` will be together with all the classes you make. This folder together with the content of the `data` folder witch also contents your **Presets** are going to be merge with the CLOUDS apps.
-
-It's very important that you are consistent with the name of your VisualSystem. The name you choose for it have to be the same of your repo and embed on your extended class. Please put the name of it after 'CloudVisualSystem______' so if your VisualSystem is call "World" the repo will be call "World" and the extended class "CloudVisualSystemWorld".
-
-One of the first things you may change on your custom extended class is the `getSystemName()` function in order to return the exact name of your VS ( and/or your repo)
-
-	string CloudVisualSystemWorld::getSystemName()
-	{
-		return "World";
-	}
-
-By doing this the extended class will know how to access to his own `data/` folder when is embedded on the main CLOUDS app.
  
 ### Hot-Keys 
 
