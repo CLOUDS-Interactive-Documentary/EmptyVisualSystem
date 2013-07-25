@@ -5,6 +5,10 @@
 #make sure you are in the RGBDToolkit project when you run this script
 
 cd ../../../addons
+if [ $? -ne 0 ]; then
+    echo "Couldn't cd into addons. Make sure you are checked out to of_v0.7.4_osx_release/apps/myApps"
+	exit
+fi
 
 #passing no arguments means read only
 if [ -z $1 ]; then
@@ -16,38 +20,24 @@ else
 fi
 
 #private, must be read
-git clone git@github.com:rezaali/ofxExtras
 git clone https://github.com/rezaali/ofxUI
 cd ofxUI
 git checkout develop
 cd ..
+
+${PREFIX}YCAMInterlab/ofxTimeline
+cd ofxTimeline
+git checkout develop
+cd ..
+
 git clone git@github.com:rezaali/ofxColorPalettes
-git clone git@github.com:obviousjim/ofxOcean
-git clone https://github.com/satoruhiga/ofxCocoaGLView
-git clone https://github.com/satoruhiga/ofxPCL
-git clone https://github.com/memo/ofxMSAObjCPointer
-git clone https://github.com/memo/ofxMSACore
 git clone https://github.com/roymacdonald/ofxCameraSaveLoad
-git clone https://github.com/memo/ofxMSAPhysics
-git clone https://github.com/memo/ofxMSAObjCPointer
 ${PREFIX}rezaali/ofxGenerative
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
 ${PREFIX}Flightphase/ofxGameCamera
 ${PREFIX}Flightphase/ofxRange
 ${PREFIX}Flightphase/ofxTween
-${PREFIX}Flightphase/ofxMSAInteractiveObject
 ${PREFIX}Flightphase/ofxTextInputField
-${PREFIX}obviousjim/ofxRGBDepth
-cd ofxRGBDepth
-git checkout develop
-cd ..
-${PREFIX}obviousjim/ofxCv
-${PREFIX}obviousjim/ofxKinect
-${PREFIX}obviousjim/ofxOpenNI
 ${PREFIX}obviousjim/ofxMSATimer
 ${PREFIX}YCAMInterlab/ofxTimecode
-${PREFIX}YCAMInterlab/ofxTimeline
-cd ofxTimeline
-git checkout develop
-cd ..
-${PREFIX}obviousjim/ofxObjLoader		
+
