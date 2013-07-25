@@ -36,7 +36,7 @@ Next you need to rename the project to the name of your sketch,
 * Change CloudsVisualSystem class name to another class name using find-replace
 * Ask us to create a new repo on [CLOUDS-Interactive-Documentary](https://github.com/CLOUDS-Interactive-Documentary) that matches your sketch name 'MyVisualSystem' 
 * Its URL would be git@github.com:CLOUDS-Interactive-Documentary/MyVisualSystem
-* Make a copy of emptyVisualSystem folder in myApps/ and rename it to MyVisualSystem
+* Rename emptyVisualSystem folder in myApps/ to MyVisualSystem
 * In the terminal, cd into MyVisualSystem/ and redirect from the empty repo to your new repo
 
 		$ git remote rm origin
