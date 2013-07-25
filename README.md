@@ -47,7 +47,7 @@ Next you need to rename the project to the name of your sketch,
 
 To Run you'll need to modify two things in the oF Core
 
-In libs/openFrameworks/gl/ofLight.h add reference declaration and remove const
+In libs/openFrameworks/gl/ofLight.h add reference `&` and remove `const` keyword
 
 		ofFloatColor& getAmbientColor();
 		ofFloatColor& getDiffuseColor();
@@ -70,7 +70,7 @@ In libs/openFrameworks/gl/ofLight.cpp as well
 			return specularColor;
 		}
 		
-In libs/openFrameworks/gl/ofMaterial.h add references to the material colors
+In libs/openFrameworks/gl/ofMaterial.h add reference `&` to the material colors
 
 		ofFloatColor& getDiffuseColor();
 		ofFloatColor& getAmbientColor();
