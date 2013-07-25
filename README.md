@@ -27,7 +27,7 @@ Download a fresh openFrameworks 0.7.4 http://www.openframeworks.cc/download/ unz
 Next you need to rename the project to the name of your sketch,
 	
 * Rename the project file from EmptyVisualSystem to something else
-* In EmptyVisualSystem.h modify the system name to match your sketch
+* In `CloudsVisualSystemEmpty.h` modify the system name to match your sketch
 		
 		string getSystemName(){
 			return "MyVisualSystem"
