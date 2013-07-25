@@ -125,7 +125,11 @@ CLOUDS uses many addons from the community
 
 ### Loading Data
 
-Anywhere you want to access things in your bin/data folder you'll need to do so by first calling getVisualSystemDataPath() + "path/to/my/stuff". This will ensure that your data access works when running the module inside of CLOUDS.
+Anywhere you want to access things in your bin/data folder you'll need to do so by first calling 
+
+    getVisualSystemDataPath() + "path/to/my/stuff"
+    
+This will ensure that your data access works when running the module inside of CLOUDS.
 
 ### Saving Presets
 
