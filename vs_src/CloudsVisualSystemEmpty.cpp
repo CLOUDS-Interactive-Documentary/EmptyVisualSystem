@@ -57,18 +57,6 @@ void CloudsVisualSystemEmpty::selfDraw()
 
 }
 
-
-void CloudsVisualSystemEmpty::selfSetupGuis()
-{
-    
-}
-
-void CloudsVisualSystemEmpty::selfAutoMode()
-{
-    
-}
-
-
 void CloudsVisualSystemEmpty::selfDrawBackground()
 {
     
