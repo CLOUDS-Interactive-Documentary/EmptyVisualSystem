@@ -13,7 +13,7 @@ Download a fresh openFrameworks 0.7.4 from http://www.openframeworks.cc/download
 		$ cd of_v0.7.4_osx_release/apps/myApps
 		$ git clone https://github.com/CLOUDS-Interactive-Documentary/EmptyVisualSystem
 	
-* Get the shared code library for Clouds
+* Get the shared code library for CLOUDS
  
 		$ cd EmptyVisualSystem/
 		$ git submodule init
@@ -125,11 +125,11 @@ CLOUDS uses many addons from the community
 
 ### Loading Data
 
-Anywhere you want to access things in your bin/data folder you'll need to do so by first calling getVisualSystemDataPath() + "path/to/my/stuff". This will ensure that your data access works when running the module inside of Clouds.
+Anywhere you want to access things in your bin/data folder you'll need to do so by first calling getVisualSystemDataPath() + "path/to/my/stuff". This will ensure that your data access works when running the module inside of CLOUDS.
 
 ### Saving Presets
 
-Clouds VisualSystems are driven by presets. To create a preset, configure the variables and timing just how you like and then click Save on the main GUI. Enter a name on the popup window and confirm. This will save all your settings into bin/data/Presets/
+CLOUDS VisualSystems are driven by presets. To create a preset, configure the variables and timing just how you like and then click Save on the main GUI. Enter a name on the popup window and confirm. This will save all your settings into bin/data/Presets/
 
 The Presets GUI now has a button with the name you just entered, and you can click it to bring these settings back. Feel free to change anything after you've created a preset, since you'll always be modifying the Working/ preset.
 
