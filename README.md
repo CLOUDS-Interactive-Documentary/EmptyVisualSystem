@@ -8,18 +8,18 @@ In order to make the process of making a VisualSystem efficient and easy we have
 
 Download a fresh openFrameworks 0.7.4 http://www.openframeworks.cc/download/ unzip it and do the following commands in the terminal
 	
-* clone the empty template
+* Clone the empty template
 
 		$ cd of_v0.7.4_osx_release/apps/myApps
 		$ git clone https://github.com/CLOUDS-Interactive-Documentary/EmptyVisualSystem
 	
-* get the shared code library for Clouds
-* 
+* Get the shared code library for Clouds
+ 
 		$ cd EmptyVisualSystem/
 		$ git submodule init
 		$ git submodule update
 		
-* clone all the addons
+* Clone all the addons
 
 		$ chmod 733 cloneaddons.sh
 		$ ./cloneaddons.sh
@@ -36,8 +36,8 @@ Next you need to rename the project to the name of your sketch,
 * Change CloudsVisualSystem class name to another class name using find-replace
 * Ask us to create a new repo on CLOUDS-Interactive-Documentary that matches your sketch name 'MyVisualSystem' 
 * It's URL would be git@github.com:CLOUDS-Interactive-Documentary/MyVisualSystem
-* make a copy of emptyVisualSystem folder in myApps/ and rename it to MyVisualSystem
-* in the terminal, cd into Ocean/ and and redirect from the empty repo to your new repo
+* Make a copy of emptyVisualSystem folder in myApps/ and rename it to MyVisualSystem
+* In the terminal, cd into Ocean/ and and redirect from the empty repo to your new repo
 
 		$ git remote rm origin
 		$ git remote add origin git@github.com:CLOUDS-Interactive-Documentary/MyVisualSystem.git 
