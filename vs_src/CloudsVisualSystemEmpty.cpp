@@ -18,13 +18,16 @@ void CloudsVisualSystemEmpty::selfSetupGui(){
 	customGui->addButton("Custom Button", false);
 	customGui->addToggle("Custom Toggle", &customToggle);
 	
+	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemEmpty::selfGuiEvent);
+	
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
-	
 }
 
 void CloudsVisualSystemEmpty::selfGuiEvent(ofxUIEventArgs &e){
-	
+	if(e.widget->getName() == "Custom Button"){
+		cout << "Button pressed!" << endl;
+	}
 }
 
 //Use system gui for global or logical settings, for exmpl
