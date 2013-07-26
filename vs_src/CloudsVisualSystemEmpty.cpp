@@ -40,7 +40,7 @@ void CloudsVisualSystemEmpty::guiSystemEvent(ofxUIEventArgs &e){
 }
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemEmpty::selfSetupRenderGui(){
-	
+
 }
 
 void CloudsVisualSystemEmpty::guiRenderEvent(ofxUIEventArgs &e){
@@ -51,7 +51,16 @@ void CloudsVisualSystemEmpty::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemEmpty::selfSetup(){
+
 //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
+	
+}
+
+// selfPresetLoaded is called whenever a new preset is triggered
+// it'll be called right before selfBegin() and you may wish to
+// refresh anything that a preset may offset, such as stored colors or particles
+void CloudsVisualSystemEmpty::selfPresetLoaded(string presetPath){
+	
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -60,32 +69,35 @@ void CloudsVisualSystemEmpty::selfSetup(){
 void CloudsVisualSystemEmpty::selfBegin(){
 	
 }
-// selfPresetLoaded is called whenever a new preset is triggered
-// it'll be called right before selfBegin() and you may wish to
-// refresh anything that a preset may offset, such as stored colors or particles
-void CloudsVisualSystemEmpty::selfPresetLoaded(string presetPath){
-	
-}
+
 //do things like ofRotate/ofTranslate here
 //any type of transformation that doesn't have to do with the camera
 void CloudsVisualSystemEmpty::selfSceneTransformation(){
 	
 }
+
 //normal update call
 void CloudsVisualSystemEmpty::selfUpdate(){
-	
+
 }
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemEmpty::selfDraw(){
+//	sharedRenderer->setShaderPath();
+//	sharedRenderer->bind();	
+//	sharedRenderer->unbind();
 	
 }
+
 // draw any debug stuff here
 void CloudsVisualSystemEmpty::selfDrawDebug(){
 	
 }
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemEmpty::selfDrawBackground(){
+
+	//turn the background refresh off
+	//bClearBackground = false;
 	
 }
 // this is called when your system is no longer drawing.

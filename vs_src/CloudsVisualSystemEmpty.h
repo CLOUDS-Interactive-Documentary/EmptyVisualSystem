@@ -64,6 +64,9 @@ class CloudsVisualSystemEmpty : public CloudsVisualSystem {
     // draw any debug stuff here
 	void selfDrawDebug();
 
+	//draws through RGBD camera;
+//	void selfDrawRGBD();
+	
 	// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 	void selfDrawBackground();
 
