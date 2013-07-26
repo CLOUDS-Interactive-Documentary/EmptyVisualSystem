@@ -103,6 +103,7 @@
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7D26E5817A2E63A00652876 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D26E5617A2E63A00652876 /* CloudsRGBDVideoPlayer.cpp */; };
+		E7D26E5C17A2F0CF00652876 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D26E5A17A2F0CF00652876 /* CloudsRGBDCamera.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 /* End PBXBuildFile section */
@@ -403,6 +404,8 @@
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7D26E5617A2E63A00652876 /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
 		E7D26E5717A2E63A00652876 /* CloudsRGBDVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDVideoPlayer.h; sourceTree = "<group>"; };
+		E7D26E5A17A2F0CF00652876 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
+		E7D26E5B17A2F0CF00652876 /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -812,6 +815,8 @@
 		3DA460BE179ED608002EC0AC /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E7D26E5B17A2F0CF00652876 /* CloudsRGBDCamera.h */,
+				E7D26E5A17A2F0CF00652876 /* CloudsRGBDCamera.cpp */,
 				3DA460C3179ED608002EC0AC /* CloudsVisualSystem.h */,
 				3DA460C2179ED608002EC0AC /* CloudsVisualSystem.cpp */,
 				E7D26E5717A2E63A00652876 /* CloudsRGBDVideoPlayer.h */,
@@ -1260,6 +1265,7 @@
 				644DD7FC17A206F2009950CB /* ofxAVFVideoPlayer.mm in Sources */,
 				644DD7FD17A206F2009950CB /* ofxAVFVideoRenderer.m in Sources */,
 				E7D26E5817A2E63A00652876 /* CloudsRGBDVideoPlayer.cpp in Sources */,
+				E7D26E5C17A2F0CF00652876 /* CloudsRGBDCamera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
