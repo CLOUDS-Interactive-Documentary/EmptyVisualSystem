@@ -57,6 +57,8 @@ void CloudsVisualSystemEmpty::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemEmpty::selfSetup(){
 
+	loadTestVideo();
+	
 //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
 	
 }
@@ -88,9 +90,6 @@ void CloudsVisualSystemEmpty::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemEmpty::selfDraw(){
-//	sharedRenderer->setShaderPath();
-//	sharedRenderer->bind();	
-//	sharedRenderer->unbind();
 	
 }
 
