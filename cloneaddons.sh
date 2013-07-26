@@ -30,7 +30,6 @@ cd ofxTimeline
 git checkout develop
 cd ..
 
-git clone git@github.com:rezaali/ofxColorPalettes
 git clone https://github.com/roymacdonald/ofxCameraSaveLoad
 ${PREFIX}rezaali/ofxGenerative
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
