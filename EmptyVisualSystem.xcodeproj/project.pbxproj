@@ -812,10 +812,10 @@
 		3DA460BE179ED608002EC0AC /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				3DA460C2179ED608002EC0AC /* CloudsVisualSystem.cpp */,
 				3DA460C3179ED608002EC0AC /* CloudsVisualSystem.h */,
-				E7D26E5617A2E63A00652876 /* CloudsRGBDVideoPlayer.cpp */,
+				3DA460C2179ED608002EC0AC /* CloudsVisualSystem.cpp */,
 				E7D26E5717A2E63A00652876 /* CloudsRGBDVideoPlayer.h */,
+				E7D26E5617A2E63A00652876 /* CloudsRGBDVideoPlayer.cpp */,
 				3DA460C5179ED608002EC0AC /* ofxLight.h */,
 				3DA460C6179ED608002EC0AC /* README.md */,
 			);
