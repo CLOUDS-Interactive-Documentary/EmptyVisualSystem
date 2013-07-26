@@ -4,6 +4,11 @@
 
 #include "CloudsVisualSystemEmpty.h"
 
+#include "CloudsRGBDCombinedRenderer.h"
+#ifdef AVF_PLAYER
+#include "ofxAVFVideoPlayer.h"
+#endif
+
 void CloudsVisualSystemEmpty::selfSetup()
 {
     
