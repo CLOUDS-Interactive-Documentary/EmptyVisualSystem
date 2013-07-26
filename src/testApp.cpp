@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetVerticalSync(true);
+	//ofSetFrameRate(24);
 	
 	visualSystem.setup();
 	visualSystem.playSystem();

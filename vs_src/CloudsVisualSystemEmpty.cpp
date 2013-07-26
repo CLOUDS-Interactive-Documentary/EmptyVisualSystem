@@ -3,6 +3,7 @@
 //
 
 #include "CloudsVisualSystemEmpty.h"
+#include "CloudsRGBDVideoPlayer.h"
 
 //#include "CloudsRGBDVideoPlayer.h"
 //#ifdef AVF_PLAYER
@@ -57,7 +58,22 @@ void CloudsVisualSystemEmpty::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemEmpty::selfSetup(){
 
-	loadTestVideo();
+	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov")){
+		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov",
+								   getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.xml" );
+		
+		getRGBDVideoPlayer().swapAndPlay();
+		
+		for(int i = 0; i < 640; i += 2){
+			for(int j = 0; j < 480; j+=2){
+				simplePointcloud.addVertex(ofVec3f(i,j,0));
+			}
+		}
+		
+		pointcloudShader.load(getVisualSystemDataPath() + "shaders/rgbdcombined");
+		
+	}
+	
 	
 //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
 	
@@ -87,9 +103,18 @@ void CloudsVisualSystemEmpty::selfSceneTransformation(){
 void CloudsVisualSystemEmpty::selfUpdate(){
 
 }
+
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemEmpty::selfDraw(){
+	
+	ofPushMatrix();
+	setupRGBDTransforms();
+	pointcloudShader.begin();
+	getRGBDVideoPlayer().setupProjectionUniforms(pointcloudShader);
+	simplePointcloud.drawVertices();
+	pointcloudShader.end();
+	ofPopMatrix();
 	
 }
 
@@ -107,6 +132,8 @@ void CloudsVisualSystemEmpty::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemEmpty::selfEnd(){
+	
+	simplePointcloud.clear();
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup

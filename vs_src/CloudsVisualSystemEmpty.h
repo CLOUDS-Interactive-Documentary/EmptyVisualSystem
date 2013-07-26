@@ -61,6 +61,9 @@ class CloudsVisualSystemEmpty : public CloudsVisualSystem {
 	// you can change the camera by returning getCameraRef()
     void selfDraw();
 	
+	// use this to draw the point cloud
+	void selfDrawRGBD();
+	
     // draw any debug stuff here
 	void selfDrawDebug();
 
@@ -93,7 +96,12 @@ class CloudsVisualSystemEmpty : public CloudsVisualSystem {
 //	ofCamera& getCameraRef(){
 //		return myCustomCamera;
 //	}
-	
+
+	//
+	ofCamera& getCameraRef(){
+		return cloudsCamera;
+	}
+
 protected:
     
     //  Your Stuff
@@ -105,4 +113,6 @@ protected:
 	float customFloat2;
 	
 	ofImage someImage;
+	ofShader pointcloudShader;
+	ofVboMesh simplePointcloud;
 };
