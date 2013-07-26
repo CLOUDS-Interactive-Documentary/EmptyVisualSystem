@@ -88,15 +88,15 @@ Match the changes in libs/openFrameworks/gl/ofMaterial.cpp
 			return diffuse;
 		}
 		
-		ofFloatColor ofMaterial::getAmbientColor() {
+		ofFloatColor& ofMaterial::getAmbientColor() {
 			return ambient;
 		}
 		
-		ofFloatColor ofMaterial::getSpecularColor() {
+		ofFloatColor& ofMaterial::getSpecularColor() {
 			return specular;
 		}
 		
-		ofFloatColor ofMaterial::getEmissiveColor() {
+		ofFloatColor& ofMaterial::getEmissiveColor() {
 			return emissive;
 		}
 
