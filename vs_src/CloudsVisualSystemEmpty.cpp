@@ -26,6 +26,8 @@ void CloudsVisualSystemEmpty::selfSetupGui(){
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemEmpty::selfGuiEvent);
 	
+	
+	
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
@@ -57,7 +59,9 @@ void CloudsVisualSystemEmpty::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemEmpty::selfSetup(){
-
+	
+	videoLoaded = false;
+	
 	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov")){
 		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov",
 								   getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.xml" );
@@ -71,7 +75,7 @@ void CloudsVisualSystemEmpty::selfSetup(){
 		}
 		
 		pointcloudShader.load(getVisualSystemDataPath() + "shaders/rgbdcombined");
-		
+		videoLoaded = true;
 	}
 	
 	
@@ -108,13 +112,15 @@ void CloudsVisualSystemEmpty::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemEmpty::selfDraw(){
 	
-	ofPushMatrix();
-	setupRGBDTransforms();
-	pointcloudShader.begin();
-	getRGBDVideoPlayer().setupProjectionUniforms(pointcloudShader);
-	simplePointcloud.drawVertices();
-	pointcloudShader.end();
-	ofPopMatrix();
+	if(videoLoaded){
+		ofPushMatrix();
+		setupRGBDTransforms();
+		pointcloudShader.begin();
+		getRGBDVideoPlayer().setupProjectionUniforms(pointcloudShader);
+		simplePointcloud.drawVertices();
+		pointcloudShader.end();
+		ofPopMatrix();
+	}
 	
 }
 

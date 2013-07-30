@@ -60,16 +60,10 @@ class CloudsVisualSystemEmpty : public CloudsVisualSystem {
 	// selfDraw draws in 3D using the default ofEasyCamera
 	// you can change the camera by returning getCameraRef()
     void selfDraw();
-	
-	// use this to draw the point cloud
-	void selfDrawRGBD();
-	
+		
     // draw any debug stuff here
 	void selfDrawDebug();
 
-	//draws through RGBD camera;
-//	void selfDrawRGBD();
-	
 	// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 	void selfDrawBackground();
 
@@ -99,7 +93,10 @@ class CloudsVisualSystemEmpty : public CloudsVisualSystem {
 
 	//
 	ofCamera& getCameraRef(){
-		return cloudsCamera;
+		if(videoLoaded){
+			return cloudsCamera;
+		}
+		return CloudsVisualSystem::getCameraRef();
 	}
 
 protected:
@@ -112,6 +109,7 @@ protected:
 	float customFloat1;
 	float customFloat2;
 	
+	bool videoLoaded;
 	ofImage someImage;
 	ofShader pointcloudShader;
 	ofVboMesh simplePointcloud;
