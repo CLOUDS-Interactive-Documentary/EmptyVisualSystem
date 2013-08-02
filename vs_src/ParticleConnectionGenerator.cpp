@@ -20,16 +20,11 @@ ParticleConnectionGenerator::ParticleConnectionGenerator(){
 	lastBoundarySize = 0;
 	boundarySize = 500;
 	bBinMeshDirty = false;
-	maxTotalConnections = 400000;
-	
+	maxTotalConnections = 40000;
 }
 
 void ParticleConnectionGenerator::setup(){
 	
-	for(int i = 0; i < numParticles; i++){
-		pointMesh.addVertex( ofVec3f(0, 0, 0) );
-		connectors.push_back(new ParticleConnector( pointMesh.getVertices()[i] ));
-	}
 	
 	for(int i = 0; i < maxTotalConnections; i++){
 		connectionMesh.addColor(ofFloatColor(0));
@@ -43,85 +38,135 @@ void ParticleConnectionGenerator::setup(){
 
 void ParticleConnectionGenerator::update(){
 	
-	if(lastMinDistance != minDistance ||
+	checkParticleCounts();
+	
+	updateConnectors();
+	
+	if(!drawConnections) return;
+	
+	updateConnections();
+}
+
+void ParticleConnectionGenerator::checkParticleCounts(){
+	numParticles = floor(numParticles);
+	while(connectors.size() > numParticles){
+		
+		int deleteIndex = connectors.size() - 1;
+		while (deleteIndex >= 0 && connectors[deleteIndex]->connectingLines.size() != 0) {
+			deleteIndex--;
+		}
+		
+		if(deleteIndex <= 0) break;
+		
+		delete connectors[deleteIndex];
+		connectors.erase( connectors.begin() + deleteIndex);
+		
+		pointMesh.getVertices().erase( pointMesh.getVertices().begin() + pointMesh.getVertices().size()-1 );
+	}
+	
+	while(connectors.size() < numParticles){
+		
+		pointMesh.addVertex(ofVec3f(0,0,0));
+		ParticleConnector* connector = new ParticleConnector() ;
+		lastBoundarySize = 0;
+		connectors.push_back(connector);
+	}
+	
+}
+
+void ParticleConnectionGenerator::updateConnectors(){
+	if(lastMinDistance  != minDistance ||
 	   lastBoundarySize != boundarySize)
 	{
 		setBounds(boundarySize, minDistance);
 		
 		lastMinDistance = minDistance;
 		lastBoundarySize = boundarySize;
-
+		
 		ofVec3f boundaryPoint = ofVec3f(boundarySize,boundarySize,boundarySize);
 		for(int i = 0; i < connectors.size(); i++){
 			connectors[i]->upperBounds =  boundaryPoint;
 			connectors[i]->lowerBounds = -boundaryPoint;
 		}
 		for(int i = 0; i < connections.size(); i++){
-			connections[i].minDistance = minDistance;
+			connections[i]->minDistance = minDistance;
 		}
-		
-	}
-
-	for(int i = 0; i < connectors.size(); i++){
-		connectors[i]->update();
-		
-		connectors[i]->binIndex1 = positionToBinIndex(connectors[i]->position, NULL);
-		connectors[i]->binIndex2 = positionToBinIndex(connectors[i]->position, NULL);
 	}
 	
-	if(!drawConnections) return;
+	for(int i = 0; i < connectors.size(); i++){
+		connectors[i]->update();
+		connectors[i]->binIndex1 = positionToBinIndex(connectors[i]->position);
+		connectors[i]->binIndex2 = positionToBinIndex(connectors[i]->position);
+	}
+	
+}
+
+void ParticleConnectionGenerator::updateConnections(){
 	
 	
 	searchStartIdx = (searchStartIdx + 1) % searchStepSize;
 	float squaredDistance = pow(minDistance,2);
-
+	
 	for(int i = 0; i < connectors.size(); i++){
 		int numConnects = 0;
 		for(int j = searchStartIdx; j < connectors.size(); j+= searchStepSize){
+
 			if(i != j &&
-			  (connectors[i]->binIndex1 == connectors[j]->binIndex1 || connectors[i]->binIndex2 == connectors[j]->binIndex2) &&
-			   connectors[i]->connections.find(connectors[j]) == connectors[i]->connections.end() &&
-			   connectors[j]->connections.find(connectors[i]) == connectors[j]->connections.end() &&
+			   (connectors[i]->binIndex1 == connectors[j]->binIndex1 || connectors[i]->binIndex2 == connectors[j]->binIndex2) &&
+			   connectors[i]->connectingParticles.find(connectors[j]) == connectors[i]->connectingParticles.end() &&
+			   connectors[j]->connectingParticles.find(connectors[i]) == connectors[j]->connectingParticles.end() &&
 			   connectors[i]->position.distanceSquared(connectors[j]->position) < squaredDistance &&
 			   !freeConnectionIndeces.empty())
 			{
-				ParticleConnection connection;
-				connection.a = connectors[i];
-				connection.b = connectors[j];
-				connection.connectionMeshRef = &connectionMesh;
-				connection.connectionVboIndex = *freeConnectionIndeces.begin();
-				freeConnectionIndeces.erase(freeConnectionIndeces.begin());
-//				connection.steps = 10;
-				connection.minDistance = minDistance;
-				connection.createConnections();
-				connection.a->connections.insert(connection.b);
-				connection.b->connections.insert(connection.a);
+				ParticleConnection* connection = new ParticleConnection();
 				
-//				cout << "connection made " << freeConnectionIndeces.size() << endl;
+				connection->a = connectors[i];
+				connection->b = connectors[j];
+				connection->connectionMeshRef = &connectionMesh;
+				connection->connectionVboIndex = *freeConnectionIndeces.begin();
+				freeConnectionIndeces.erase(freeConnectionIndeces.begin());
+				
+				connection->minDistance = minDistance;
+				connection->createConnections();
+				connection->a->connectingParticles.insert(connection->b);
+				connection->b->connectingParticles.insert(connection->a);
+				
 				connections.push_back(connection);
-//				if(numConnects++ >= maxConnections) break;
+				connection->a->connectingLines.insert( connections[connections.size()-1] );
+				connection->b->connectingLines.insert( connections[connections.size()-1] );
+				
 			}
 		}
 	}
 	
 	for(int i = connections.size()-1; i >= 0; i--){
 		
-		connections[i].updateConnections();
+		connections[i]->updateConnections();
 		
-		if(connections[i].currentColor < 0){
-			
-			set<ParticleConnector*>& setA = connections[i].a->connections;
-			set<ParticleConnector*>& setB = connections[i].b->connections;
-			
-			setA.erase( setA.find( connections[i].b) );
-			setB.erase( setB.find( connections[i].a) );
-			
-			//reclaim connection
-			freeConnectionIndeces.insert( connections[i].connectionVboIndex );
-			connections.erase(connections.begin() + i);
-			//cout << "connection erased" << endl;
+		if(connections[i]->dead){
+			deleteConnection(connections.begin() + i);
 		}
 	}
+
+}
+
+void ParticleConnectionGenerator::deleteConnection(vector<ParticleConnection*>::iterator it){
+
+	ParticleConnection* connection = *it;
+
+	set<ParticleConnector*>& setA = connection->a->connectingParticles;
+	set<ParticleConnector*>& setB = connection->b->connectingParticles;
+
+	setA.erase( setA.find( connection->b) );
+	setB.erase( setB.find( connection->a) );
+
+	connection->a->connectingLines.erase( connection->a->connectingLines.find(connection) );
+	connection->b->connectingLines.erase( connection->b->connectingLines.find(connection) );
+
+	//reclaim connection
+	freeConnectionIndeces.insert( connection->connectionVboIndex );
+	delete connection;
+	connections.erase(it);
 }
 
 void ParticleConnectionGenerator::setBounds(float bounds, float minDist){
@@ -132,68 +177,10 @@ void ParticleConnectionGenerator::setBounds(float bounds, float minDist){
 	
 	bBinMeshDirty = true;
 	//boundarySize = currentSubdivisions * currentBinSize / 2.;
-
-	
-//	ofVec3f lowerBounds = ofVec3f(-bounds,-bounds,-bounds);
-//	cout << "upper bound was " << bounds << " width min distance " << minDistance << " and an adjusted size of " << adjustedArea;
-//	bounds = adjustedArea ;
-//	cout << "adjusted upper bounds is " << bounds << endl;
-
-	/*
-	for(int i = 0; i < connectors.size(); i++){
-		connectors[i]->lowerBounds = lowerBounds;
-		connectors[i]->upperBounds = upperBounds;
-	}
-
-	for(int i = 0; i < binsLayer1.size(); i++) delete binsLayer1[i];
-	for(int i = 0; i < binsLayer2.size(); i++) delete binsLayer2[i];
-	binsLayer1.clear();
-	binsLayer2.clear();
-	
-	binSpaceDivision1.clear();
-	binSpaceDivision2.clear();
-
-	ofVec3f binSize = (upperBounds - lowerBounds) / subdivisions;
-	
-	//create initial bins
-	for(int z = 0; z < subdivisions; z++){
-		for(int y = 0; y < subdivisions; y++){
-			for(int x = 0; x < subdivisions; x++){
-				ofVec3f binMin = lowerBounds + binSize * ofVec3f(x,y,z);
-				ofVec3f binMax = lowerBounds + binSize * ofVec3f(x+1,y+1,z+1);
-				ParticleConnectorBin* b = new ParticleConnectorBin();
-				b->minBound = binMin;
-				b->maxBound = binMax;
-				b->size = binSize;
-				binsLayer1.push_back(b);
-				
-				binSpaceDivision1[ positionToBinIndex(b->minBound, binsLayer1[0]) ] = binsLayer1.size()-1;
-			}
-		}
-	}
-	
-	//offset bins
-	for(int z = 0; z <= subdivisions; z++){
-		for(int y = 0; y <= subdivisions; y++){
-			for(int x = 0; x <= subdivisions; x++){
-				ofVec3f binMin = lowerBounds + binSize * ofVec3f(x,y,z) - binSize/2;
-				ofVec3f binMax = lowerBounds + binSize * ofVec3f(x+1,y+1,z+1) - binSize/2;
-				ParticleConnectorBin* b = new ParticleConnectorBin();
-				b->minBound = binMin;
-				b->maxBound = binMax;
-				b->size = binSize;
-				binsLayer2.push_back(b);
-				
-				binSpaceDivision2[ positionToBinIndex(b->minBound, binsLayer2[0]) ] = binsLayer2.size()-1;
-				
-			}
-		}
-	}
-	 */
 }
 
-int ParticleConnectionGenerator::positionToBinIndex(ofVec3f pos, ParticleConnectorBin* refBin){
-//	ofVec3f quantized = (pos + refBin->minBound) / refBin->size;
+int ParticleConnectionGenerator::positionToBinIndex(ofVec3f pos){
+
 	ofVec3f quantized = (pos - ofVec3f(boundarySize, boundarySize, boundarySize)) / currentBinSize;
 	return floor(quantized.x) +
 		   floor(quantized.y) * currentSubdivisions +
@@ -250,24 +237,7 @@ void ParticleConnectionGenerator::drawBins(){
 	ofPushStyle();
 	
 	binMesh.draw();
-	/*	
-	for(int i = 0; i < binsLayer1.size(); i++){
-		ofVec3f position = binsLayer1[i]->minBound + (binsLayer1[i]->maxBound - binsLayer1[i]->minBound) / 2.0;
-		ofBox(position,
-			  binsLayer1[i]->size.x,
-			  binsLayer1[i]->size.y,
-			  binsLayer1[i]->size.z);
-	}
-	
-	for(int i = 0; i < binsLayer2.size(); i++){
-		ofVec3f position = binsLayer2[i]->minBound + (binsLayer2[i]->maxBound - binsLayer2[i]->minBound) / 2.0;
-		ofBox(position,
-			  binsLayer2[i]->size.x,
-			  binsLayer2[i]->size.y,
-			  binsLayer2[i]->size.z);
-	}
-	 
-	*/
+
 	ofPopStyle();
 }
 
@@ -278,15 +248,10 @@ void ParticleConnectionGenerator::draw(){
 	
 	for(int i = 0; i < connectors.size(); i++){
 		pointMesh.setVertex(i, connectors[i]->position);
-		
 	}
-	pointMesh.drawVertices();
-
-	connectionMesh.draw();
 	
-//	for(int i = 0; i < connections.size(); i++){
-//		connections[i].connectionLines.draw();
-//	}
+	pointMesh.drawVertices();
+	connectionMesh.draw();
 	
 	ofPopStyle();
 }

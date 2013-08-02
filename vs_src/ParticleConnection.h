@@ -15,7 +15,7 @@ class ParticleConnection {
 	int steps;
 	int createFrame;
 	int minDistance;
-	
+	bool dead;
 	ParticleConnector* a;
 	ParticleConnector* b;
 	ofVboMesh* connectionMeshRef;

@@ -9,26 +9,23 @@
 #include "ParticleConnector.h"
 #include "ofRange.h"
 
+//http://demonstrations.wolfram.com/RandomPointsOnASphere/
+
 ofVec3f randomPointOnSphere(){
 	
 	float theta = ofRandom(TWO_PI);
 	float u = ofRandomf();
 	float usqrtinv = sqrt(1. - powf(u,2.));
 	return ofVec3f(cos(theta) * usqrtinv,
-				   sin(theta) * usqrtinv, u);
-	
+				   sin(theta) * usqrtinv, u);	
 };
 
-ParticleConnector::ParticleConnector(ofVec3f pos)
-	: position(pos)
+ParticleConnector::ParticleConnector()
 {
-	//http://demonstrations.wolfram.com/RandomPointsOnASphere/
 	
 	direction = randomPointOnSphere();
 	position = direction*500;
-	
 	binIndex1 = binIndex2 = 0;
-
 }
 
 ParticleConnector::~ParticleConnector(){

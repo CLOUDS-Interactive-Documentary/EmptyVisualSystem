@@ -4,17 +4,18 @@
 #include "ofMain.h"
 #include <set>
 
-//class ParticleConnection;
-
+class ParticleConnection;
 class ParticleConnector {
   public:
-	ParticleConnector(ofVec3f pos);
+	ParticleConnector();
 	~ParticleConnector();
 
 	void update();
 	ofVec3f position;
 	ofVec3f direction;
-	set<ParticleConnector*> connections;
+	
+	set<ParticleConnector*> connectingParticles;
+	set<ParticleConnection*> connectingLines;
 	
 	int binIndex1;
 	int binIndex2;

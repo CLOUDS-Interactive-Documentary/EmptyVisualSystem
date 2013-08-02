@@ -11,7 +11,7 @@ class ParticleConnectionGenerator {
 	ParticleConnectionGenerator();
 
 	bool drawConnections;
-	int	numParticles;
+	float numParticles;
 	int maxTotalConnections;
 	float maxConnections;
 	
@@ -24,7 +24,6 @@ class ParticleConnectionGenerator {
 
 	void drawBins();
 	
-	
   protected:
 	ofMesh pointMesh;
 	float lastMinDistance;
@@ -32,24 +31,22 @@ class ParticleConnectionGenerator {
 	float currentBinSize;
 	
 	ofVboMesh binMesh;
-	
 
 	ofVboMesh connectionMesh;
 	set<int> freeConnectionIndeces;
+	void deleteConnection(vector<ParticleConnection*>::iterator it);
 	
 	void setBounds(float bounds, float minDistance);
-
+	void checkParticleCounts();
+	void updateConnectors();
+	void updateConnections();
+	
 	int currentSubdivisions;
 	vector<ParticleConnector*> connectors;
-	vector<ParticleConnectorBin*> binsLayer1;
-	vector<ParticleConnectorBin*> binsLayer2;
-	vector<ParticleConnection> connections;
+	vector<ParticleConnection*> connections;
 	
 	bool bBinMeshDirty;
-	int positionToBinIndex(ofVec3f pos, ParticleConnectorBin* refBin);
-	
-	map<int,int> binSpaceDivision1;
-	map<int,int> binSpaceDivision2;
+	int positionToBinIndex(ofVec3f pos);
 	
 	int searchStartIdx;
 	int searchStepSize;

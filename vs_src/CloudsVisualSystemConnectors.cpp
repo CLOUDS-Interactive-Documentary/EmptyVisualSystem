@@ -19,6 +19,7 @@ void CloudsVisualSystemConnectors::selfSetupGui(){
 	connectorGui->setName("Custom");
 	connectorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
+	connectorGui->addSlider("Num Particles", 50, 64*64, &generator.numParticles);
 	connectorGui->addToggle("Draw Connections", &generator.drawConnections);
 	connectorGui->addSlider("Min Connection Distance", 1, 100, &generator.minDistance);
 	connectorGui->addSlider("Boundary Size", 100, 1000, &generator.boundarySize);
@@ -79,7 +80,6 @@ void CloudsVisualSystemConnectors::selfSetup(){
 	}
 	
 
-	generator.numParticles = 800;
 	
 	generator.setup();
 
