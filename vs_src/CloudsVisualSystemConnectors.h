@@ -11,16 +11,17 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "ParticleConnectionGenerator.h"
 
 //TODO: rename this to your own visual system
-class CloudsVisualSystemEmpty : public CloudsVisualSystem {
+class CloudsVisualSystemConnectors : public CloudsVisualSystem {
   public:
     
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "EmptySystem";
+		return "Connectors";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -91,7 +92,7 @@ class CloudsVisualSystemEmpty : public CloudsVisualSystem {
 //		return myCustomCamera;
 //	}
 
-	//
+
 	ofCamera& getCameraRef(){
 		if(videoLoaded){
 			return cloudsCamera;
@@ -104,13 +105,14 @@ protected:
     //  Your Stuff
     //
 	
-	ofxUISuperCanvas* customGui;
-	bool customToggle;
-	float customFloat1;
-	float customFloat2;
+	ofxUISuperCanvas* connectorGui;
 	
 	bool videoLoaded;
-	ofImage someImage;
 	ofShader pointcloudShader;
 	ofVboMesh simplePointcloud;
+	
+	
+	ParticleConnectionGenerator generator;
+	ofMesh connectionLines;
+	
 };

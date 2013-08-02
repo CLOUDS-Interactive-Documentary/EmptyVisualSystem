@@ -1,0 +1,22 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Draw Connections</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Min Connection Distance</Name>
+    <Value>87.320198059</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max Connections</Name>
+    <Value>2.906404018</Value>
+</Widget>
