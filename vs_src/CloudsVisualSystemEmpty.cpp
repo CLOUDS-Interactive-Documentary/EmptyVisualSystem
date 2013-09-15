@@ -25,9 +25,6 @@ void CloudsVisualSystemEmpty::selfSetupGui(){
 	customGui->addToggle("Custom Toggle", &customToggle);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemEmpty::selfGuiEvent);
-	
-	
-	
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
