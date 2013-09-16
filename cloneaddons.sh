@@ -22,12 +22,12 @@ fi
 #private, must be read
 git clone https://github.com/rezaali/ofxUI
 cd ofxUI
-git checkout develop
+git checkout --track develop
 cd ..
 
 ${PREFIX}YCAMInterlab/ofxTimeline
 cd ofxTimeline
-git checkout develop
+git checkout --track develop
 cd ..
 
 git clone https://github.com/roymacdonald/ofxCameraSaveLoad
